@@ -8,13 +8,16 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-image: url('forum5.jpg');
+      /* background-image: url('forum3.webp');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      background-repeat: no-repeat; */
     }
     h1 {
-      color: #2c6e49;
+      /* color: #2c6e49; */
+      color: #333;
+      margin-top: 3em;
+      margin-bottom: 3em;
       text-align: center;
     }
     form, .feedback {
@@ -28,6 +31,7 @@
     }
     .feedback {
       margin-top: 2em;
+      margin-bottom: 3em;
     }
     label {
       display: block;
@@ -79,9 +83,236 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    /* General Header Styling */
+.header {
+  background-color: #333;
+  padding: 5px 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+    flex: 0 0 auto;
+    margin-right: 20px; /* Space between the logo and content */
+}
+
+.logo img {
+    max-width: 100px; /* Adjust the size of the logo as needed */
+    height: auto;
+}
+
+/* .logo img {
+  max-height: 50px;
+} */
+
+.nav-features {
+  display: flex;
+  gap: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-features div a {
+  text-decoration: none;
+  /* color: #333; */
+color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-features div a:hover {
+  color: #ff6600;
+}
+
+
+.hamburger-icon {
+  display: none; /* Initially hidden on larger screens */
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Hide nav links by default on small screens */
+.nav-features {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Show hamburger icon and hide nav links on small screens */
+@media (max-width: 768px) {
+  .nav-features {
+    display: none; /* Hide nav links */
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    position: absolute;
+    top: 60px; /* Adjust to your header height */
+    right: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo-content h2 {
+    margin: 0;
+    font-size: 1em; /* Adjust font size as needed */
+    color: #fff;
+}
+
+.logo-content p {
+    font-size: 0.5em; /* Adjust font size as needed */
+    color: #fff;
+}
+
+  .hamburger-icon {
+    display: block; /* Show hamburger icon */
+  }
+
+  /* Show the nav links when active */
+  .nav-features.show {
+    display: flex;
+  }
+  .hamburger-icon.hide {
+      display: none;
+    }
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    width: 100%;
+    /* margin-top: 5em; */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-contact-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+.contact-info, .footer-social {
+    width: 45%;
+}
+
+.contact-info h2, .footer-social h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+}
+
+.contact-info p, .footer-social p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social ul li {
+    display: inline-block;
+}
+
+.footer-social ul li img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1); /* To make icons white */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+/* .logo-content{
+  color: white;
+  position: relative;
+  right: 100px;
+} */
+.logo-content{
+    flex: 1;
+}
+
+.logo-content h2 {
+    margin: 0;
+    font-size: 1.6em; /* Adjust font size as needed */
+    color: #fff;
+}
+
+.logo-content p {
+    font-size: 1em; /* Adjust font size as needed */
+    color: #fff;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+   
+}
+
   </style>
 </head>
 <body>
+   <!-- Header -->
+   <header class="header">
+    <nav class="navbar">
+      <div class="logo-container">
+      <div class="logo">
+        <img src="LOGO.jpg" alt="CarbonAware Technologies">
+          </div>
+        <div class="logo-content">
+        <h2>CarbonAware Technologies</h2>
+        <p>Monitor, Purchase, and Manage Your Carbon Credits Efficiently</p>
+    
+    </div></div>
+      
+       <!-- Hamburger icon for small screens -->
+    <div class="hamburger-icon" onclick="toggleNav()">
+        &#9776; <!-- Unicode for hamburger icon -->
+      </div>
+
+      <div class="nav-features">
+        <div><a href="index.html">Home</a></div>
+        <div><a href="frontEnd_html/AboutUs.html">About Us</a></div>
+        <div><a href="frontEnd_html/service.html">Services</a></div>
+        <div><a href="frontEnd_html/contact.html">Contact</a></div>
+        <div id="currentUser"></div>
+      </div>
+  
+      <!-- <div class="search-login">
+        <input type="search" placeholder="Search">
+        <button class="login-btn">Log In</button>
+      </div> -->
+    </nav>
+  </header>
+  
 
   <h1>Community Feedback and Reporting System</h1>
 
@@ -106,6 +337,29 @@
 
   <!-- Section to display feedback and comments -->
   <div class="feedback" id="feedbackEntries"></div>
+
+  <footer class="footer-container">
+    <div class="footer-contact-info">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Address:</strong> 69 Kingsway Ave, Auckland Park, Johannesburg, 2092</p>
+            <p><strong>Phone:</strong> +27 71529 3562</p>
+            <p><strong>Email:</strong> TONK@yourcompany.com</p>
+        </div>
+        <div class="footer-social">
+            <h2>Follow Us</h2>
+            <p>Stay connected through our social platforms:</p>
+            <ul class="social-icons">
+                <li><a href="#"><img src="images\facebook-icon.png" alt="Facebook"></a></li>
+                <li><a href="#"><img src="images\Twitter.png" alt="Twitter"></a></li>
+                <li><a href="#"><img src="images\linkdin.png" alt="LinkedIn"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Carbon Credits Tracker. All rights reserved.</p>
+    </div>
+</footer>
 
   <script>
     let feedbackData = [];
