@@ -133,7 +133,7 @@
     <div class="container">
         <h1>Contact Us</h1>
 
-        <form id="contact-form" action="https://formspree.io/f/mzzpwzrnk" method="POST">
+        <form id="contact-form" action="https://formspree.io/f/mzzpwzrn" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
         
@@ -142,9 +142,19 @@
         
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
+    
+            <input type="text" name="_gotcha" style="display:none">
+        
+         
+            <input type="hidden" name="_subject" value="Thank you for contacting us!">
+            <input type="hidden" name="_replyto" value="youremail@example.com">
+        
+        
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you">
         
             <button type="submit">Send Message</button>
         </form>
+        
         
 
         <div class="contact-info">
@@ -156,8 +166,17 @@
 
         <div class="map">
             <h2>Our Location</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.578235621735!2d-122.40081268467327!3d37.79056397975985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808bfc6e3d91%3A0x620c8a8d0b2d000!2s123%20Greenway%20Dr%2C%20San%20Francisco%2C%20CA%2094157!5e0!3m2!1sen!2sus!4v1657013481352!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.509520738754!2d28.034657376074625!3d-26.19193746536142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c7a7dd71761%3A0x6699a9398c53913b!2sJBS%20Park!5e0!3m2!1sen!2sza!4v1695817260410!5m2!1sen!2sza" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
+        
     </div>
 
     <script>

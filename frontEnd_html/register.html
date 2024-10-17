@@ -5,53 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <style>
     body {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Roboto', sans-serif;
         background-color: #f0f4f8;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        margin: 0;
     }
 
     .login-container {
         background-color: #ffffff;
         padding: 40px;
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
+        box-sizing: border-box;
     }
 
     h2 {
         margin-bottom: 20px;
         text-align: center;
-        font-size: 24px;
+        font-size: 26px;
         color: #333333;
     }
 
     form div {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     label {
         display: block;
-        font-size: 14px;
+        font-size: 15px;
         color: #333333;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
     }
 
     input[type="text"],
     input[type="password"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         border: 1px solid #cccccc;
-        border-radius: 5px;
+        border-radius: 6px;
         font-size: 16px;
         color: #333333;
+        box-sizing: border-box;
+    }
+
+    input::placeholder {
+        color: #999999;
     }
 
     button[type="submit"] {
@@ -63,21 +71,28 @@
         font-size: 16px;
         color: #ffffff;
         cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
     button[type="submit"]:hover {
         background-color: #0056b3;
     }
 
-    #regMessage {
-        margin-top: 10px;
+    button[disabled] {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    #regMessage, #errorMessage {
+        margin-top: 15px;
         text-align: center;
+    }
+
+    #regMessage {
         color: #28a745;
     }
 
     #errorMessage {
-        margin-top: 10px;
-        text-align: center;
         color: #dc3545;
     }
 
@@ -93,23 +108,26 @@
 
 <body>
     <div class="login-container">
-        <h2>Register</h2>
+        <h2>Create an Account</h2>
         <form id="registerForm">
             <div>
-                <label for="username">Username:</label>
-                <input type="text" id="regUsername" required>
+                <label for="username">Username</label>
+                <input type="text" id="regUsername" placeholder="Enter username" required>
             </div>
             <div>
-                <label for="password">Password:</label>
-                <input type="password" id="regPassword" required>
+                <label for="password">Password</label>
+                <input type="password" id="regPassword" placeholder="Enter password" required>
             </div>
-            <button type="submit">Register</button>
+            <div>
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+            </div>
+            <button type="submit" id="submitBtn">Register</button>
         </form>
-        <p id="regMessage" style="color:green; display:none;">
+        <p id="regMessage" style="display:none;">
             Registration successful! <a href="../login.html">Login</a>
         </p>
-        
-        <p id="errorMessage" style="color:red; display:none;">Username already exists, please try another. <a href="../login.html">Go login</a></p>
+        <p id="errorMessage" style="display:none;">Username already exists or passwords don't match.</p>
     </div>
 
     <script>
@@ -118,16 +136,28 @@
 
             const username = document.getElementById('regUsername').value;
             const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const regMessage = document.getElementById('regMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Passwords do not match!';
+                regMessage.style.display = 'none';
+                return;
+            }
 
             // Check if the user already exists
             if (localStorage.getItem(username)) {
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('regMessage').style.display = 'none'; // Hide success message if error
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Username already exists, please try another.';
+                regMessage.style.display = 'none'; // Hide success message if error
             } else {
                 // Store new user credentials in localStorage
                 localStorage.setItem(username, password);
-                document.getElementById('regMessage').style.display = 'block';
-                document.getElementById('errorMessage').style.display = 'none'; // Hide error message on success
+                regMessage.style.display = 'block';
+                errorMessage.style.display = 'none'; // Hide error message on success
             }
         });
     </script>
