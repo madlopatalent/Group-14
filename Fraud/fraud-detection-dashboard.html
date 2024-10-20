@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Fraud Detection Dashboard</title>
+
+</head>
+
+<body>
+    <h1>Fraud Detection Dashboard</h1>
+    <form id="transaction-form">
+        <label for="amount">Transaction Amount:</label>
+        <input type="number" id="amount" required>
+
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" required>
+
+        <button type="button" id="submit-transaction">Submit Transaction</button>
+    </form>
+
+    <div id="alert-result"></div>
+
+    <script src="/Fraud/FDdashboard.js"></script>
+</body>
+
+</html>

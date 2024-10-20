@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../CarbonDatabase/public/alpinecarbondatabase.js"></script>
     <title>Order Carbon Credits</title>
     <style>
         /* Basic styling for the page */
@@ -102,34 +105,34 @@
     <!-- Header with navigation links -->
     <header>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="company.html">Find Sellers</a></li>
+            <li><a href="/home/raphaeltabengwa/Group-14-main/index.html">Home</a></li>
+            <!-- <li><a href="company.html">Find Sellers</a></li> -->
         </ul>
     </header>
 
     <!-- Order Section -->
-    <section id="order">
+    <section id ="order" x-data="CarbonTracker">
         <h2>Order Carbon Credits</h2>
         <form id="order-form">
             <label for="credits">Enter the amount of credits you want to buy:</label>
             <input type="number" id="credits" name="credits" min="1" required>
 
             <label for="carbon-project-type">Select the type of carbon project:</label>
-            <select id="carbon-project-type" name="carbon-project-type" required>
+            <select x-model="sellerCredits" id="carbon-project-type" name="carbon-project-type" required>
                 <option value="">-- Select a project type --</option>
-                <option value="reforestation">Reforestation</option>
-                <option value="renewable-energy">Renewable Energy</option>
-                <option value="energy-efficiency">Energy Efficiency</option>
-                <option value="forest-conservation">Forest Conservation</option>
+                <option value="Reforestation/Afforestation">Reforestation/Afforestation</option>
+                <option value="Solar">Solar</option>
+                <option value="Water">Water</option>
+                <option value="Wind">Wind</option>
+                <option value="Other">Other</option>
             </select>
 
-            <button type="submit">Find Sellers</button>
+            <button type="button" @click="findSeller()">Find Sellers</button>
         </form>
-        <div id="seller-list">
+        <div id="seller-list" x-text="findSellers[0].project_name">
             <!-- List of companies will be dynamically displayed here -->
         </div>
     </section>
 
 </body>
 </html>
-  
